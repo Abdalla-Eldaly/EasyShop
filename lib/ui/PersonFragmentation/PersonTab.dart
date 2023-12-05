@@ -5,7 +5,7 @@ import 'package:quickalert/models/quickalert_type.dart';
 import 'package:quickalert/widgets/quickalert_dialog.dart';
 
 import '../auth/login/Login.dart';
-import 'ImagePaker.dart';
+
 
 class PersonTab extends StatelessWidget {
   const PersonTab({super.key});
