@@ -22,8 +22,8 @@ if (flutterVersionName == null) {
 }
 
 apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
+apply plugin: 'kotlin-android' // Add this line
+apply plugin: 'kotlin-android-extensions' // Add this line if needed
 
 android {
     compileSdkVersion flutter.compileSdkVersion
@@ -72,3 +72,4 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.android.support:multidex:1.0.3'
 }
+

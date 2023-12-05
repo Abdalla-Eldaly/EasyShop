@@ -19,6 +19,7 @@ import 'package:provider/provider.dart';
 import 'data/database/firebase_options.dart';
 
 void main() async {
+
   configureDependencies();
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -91,7 +92,8 @@ class MyApp extends StatelessWidget {
                   fontWeight: FontWeight.w400,
                   color: MyTheme.primaryColor)),
         ),
-        home:(FirebaseAuth.instance.currentUser!=null)? HomeScreen():Login(),
+        home:(FirebaseAuth.instance.currentUser!=null
+        )? HomeScreen():Login(),
         routes: {
           HomeTab.routeName: (_) => HomeTab(),
           HomeScreen.routeName: (_) => HomeScreen(),

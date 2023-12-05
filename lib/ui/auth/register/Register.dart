@@ -4,6 +4,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:path/path.dart' as Path;
+import 'package:quickalert/models/quickalert_type.dart';
+import 'package:quickalert/widgets/quickalert_dialog.dart';
 import '../../homeFragmentation/homePage/HomeScreen.dart';
 import '../RegExp/RegExp.dart';
 import '../dialigoUtli/DilaogUtali.dart';
@@ -148,6 +150,7 @@ class _RegisterState extends State<Register> {
                                   ),
                                 ),
                               ),
+
                               Container(
                                 padding: EdgeInsets.all(8.0),
                                 decoration: BoxDecoration(
@@ -302,18 +305,15 @@ class _RegisterState extends State<Register> {
         User? user = FirebaseAuth.instance.currentUser;
         await user?.sendEmailVerification();
         dialogShown.hideDialog(context);
-        dialogShown.showMessage(context, message: 'Register Succseesfully.',posActionTitle: 'OK',
-        posAction: (){
-          if(result.user!.emailVerified){
-            Navigator.pushReplacementNamed(context, Login.routeName);
-          }
-          else{
-            FirebaseAuth.instance.currentUser!.sendEmailVerification();
-
-            dialogShown.showMessage(context, message: 'Verifiy your email.',posActionTitle: 'tryAgain',);
-
-          }
-        });
+        QuickAlert.show(
+            context: context,
+            type: QuickAlertType.success,
+            confirmBtnText: 'Signin',
+            text: 'Regester Successfully!',
+            onConfirmBtnTap: (){
+              Navigator.pushReplacementNamed(context, Login.routeName);
+            }
+        );
 
       }
 
